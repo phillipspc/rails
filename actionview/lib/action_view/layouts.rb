@@ -265,7 +265,6 @@ module ActionView
       # * :only   - A list of actions to apply this layout to.
       # * :except - Apply this layout to all actions but this one.
       def layout(layout, conditions = {})
-        binding.pry
         include LayoutConditions unless conditions.empty?
 
         conditions.each { |k, v| conditions[k] = Array(v).map(&:to_s) }
@@ -280,6 +279,7 @@ module ActionView
       # If a layout is not explicitly mentioned then look for a layout with the controller's name.
       # if nothing is found then try same procedure to find super class's layout.
       def _write_layout_method # :nodoc:
+        binding.pry
         silence_redefinition_of_method(:_layout)
 
         prefixes = /\blayouts/.match?(_implied_layout_name) ? [] : ["layouts"]

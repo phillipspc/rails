@@ -139,17 +139,13 @@ module ActionView
 
   TemplateError = Template::Error
 
-  class Layout
-    # Layout::Error is raised when the layout method is used multiple times in a controller.
-    class Error < ActionViewError
-      DEFAULT_MESSAGE = "Layout was called multiple times in this controller. Please note that you may " \
-                        "only call layout once per controller."
+  # LayoutError is raised when the layout method is used multiple times in a controller.
+  class LayoutError < ActionViewError
+    DEFAULT_MESSAGE = "Layout was called multiple times in this controller. Please note that you may " \
+                      "only call layout once per controller."
 
-      def initialize(message = nil)
-        super(message || DEFAULT_MESSAGE)
-      end
+    def initialize(message = nil)
+      super(message || DEFAULT_MESSAGE)
     end
   end
-
-  LayoutError = Layout::Error
 end

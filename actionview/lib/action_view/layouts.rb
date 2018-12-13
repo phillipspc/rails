@@ -265,7 +265,7 @@ module ActionView
       # * :only   - A list of actions to apply this layout to.
       # * :except - Apply this layout to all actions but this one.
       def layout(layout, conditions = {})
-        raise ActionView::LayoutError if self._layout
+        binding.pry
         include LayoutConditions unless conditions.empty?
 
         conditions.each { |k, v| conditions[k] = Array(v).map(&:to_s) }
@@ -430,5 +430,7 @@ module ActionView
     def _include_layout?(options)
       (options.keys & [:body, :plain, :html, :inline, :partial]).empty? || options.key?(:layout)
     end
+
+    def _has_set_layout; end
   end
 end

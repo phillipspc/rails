@@ -150,4 +150,6 @@ module ActionView
       end
     end
   end
+
+  LayoutError = Layout::Error
 end

@@ -201,15 +201,6 @@ module ActionView
   #
   # This will override the controller-wide "weblog_standard" layout, and will render the help action with the "help" layout instead.
   module Layouts
-    class Error < ActionViewError
-      DEFAULT_MESSAGE = "Layout was called multiple times in this controller. Please note that you may" \
-                        "only call layout once per controller."
-
-      def initialize(message = nil)
-        super(message || DEFAULT_MESSAGE)
-      end
-    end
-
     extend ActiveSupport::Concern
 
     include ActionView::Rendering
